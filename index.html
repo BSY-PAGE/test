@@ -16,6 +16,7 @@
         --accent-gold: #c0a06b; /* 고급스러운 골드 (강조) */
         --secondary-green: #2b543e; /* 깊은 녹색 (웰니스) */
         --light-bg: #f4f4f9; /* 아주 밝은 배경 */
+        --beige-bg: #f7f3ed; /* 환영 섹션을 위한 베이지색 */
         --text-dark: #333333;
         --text-light: #f4f4f9;
         --font-heading: "Merriweather", serif;
@@ -30,7 +31,7 @@
         line-height: 1.7;
         color: var(--text-dark);
         background-color: var(--light-bg);
-        scroll-behavior: smooth;
+        scroll-behavior: smooth; /* 부드러운 스크롤 효과 (브라우저 지원) */
       }
       .container {
         width: 90%;
@@ -54,7 +55,7 @@
         font-size: 30px;
       }
 
-      /* Global Button Style */
+      /* Global Button Style (Hover 애니메이션은 CSS transform으로 구현) */
       .btn {
         display: inline-block;
         padding: 16px 35px;
@@ -69,8 +70,8 @@
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
       }
       .btn:hover {
-        background-color: #d4af37;
-        transform: translateY(-3px);
+        background-color: #d4af37; /* 마우스 오버 시 색상 변경 */
+        transform: translateY(-3px); /* 마우스 오버 시 위로 살짝 뜨는 효과 */
       }
       .text-center {
         text-align: center;
@@ -115,8 +116,9 @@
         border-radius: 5px;
       }
 
-      /* Hero Section (Requires 'serene_acupuncture_bg.jpg' file) */
+      /* Hero Section (메인 배너) */
       .hero-section {
+        /* 참고: 이미지 파일이 저장소에 있어야 합니다. */
         background: url("serene_acupuncture_bg.jpg") center center/cover
           no-repeat;
         height: 85vh;
@@ -126,12 +128,8 @@
         color: var(--text-light);
       }
       .hero-overlay {
-        background-color: rgba(
-          31,
-          42,
-          56,
-          0.78
-        ); /* Dark Overlay for readability */
+        /* 배경 이미지 오버레이 (Wix 오버레이와 동일 역할) */
+        background-color: rgba(31, 42, 56, 0.78);
         position: absolute;
         top: 0;
         left: 0;
@@ -156,37 +154,36 @@
         color: rgba(255, 255, 255, 0.9);
       }
 
-      /* --- NEW: Announcement Banner Section (Rapid Response Style) --- */
-      #announcement-banner {
-        background-color: var(--accent-gold);
-        color: var(--primary-dark);
-        padding: 30px 0;
-        text-align: center;
+      /* --- Philosophy & Why Choose Us 통합 섹션 --- */
+      .philosophy-section {
+        background-color: var(--beige-bg);
       }
-      #announcement-banner .container {
-        padding: 0 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+      .philosophy-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 텍스트 + Why Choose Us 그리드 */
+        gap: 60px;
+        align-items: top;
+      }
+      .philosophy-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
         font-weight: 700;
-        font-size: 20px;
       }
-      #announcement-banner a {
-        background-color: var(--primary-dark);
-        color: var(--text-light);
-        padding: 10px 30px;
-        border-radius: 5px;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 16px;
-        transition: opacity 0.3s;
+      .philosophy-list li {
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+        border-left: 3px solid var(--accent-gold);
+        padding-left: 10px;
       }
-      #announcement-banner a:hover {
-        opacity: 0.9;
+      .why-choose-box {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       }
-      /* ---------------------------------------------------------------- */
 
-      /* Service Grid (Card Style) */
+      /* Service Grid (3-column) */
       .service-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -199,11 +196,7 @@
         border-radius: 8px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         text-align: center;
-        transition: box-shadow 0.3s;
-        border-top: 5px solid var(--accent-gold); /* Gold line for emphasis */
-      }
-      .service-item:hover {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-top: 5px solid var(--accent-gold);
       }
       .service-item h3 {
         color: var(--secondary-green);
@@ -213,6 +206,41 @@
       .service-item p {
         font-size: 16px;
         color: #666;
+      }
+
+      /* First Visit Guide */
+      .guide-section {
+        background-color: var(--primary-dark);
+        color: var(--text-light);
+      }
+      .guide-section h2 {
+        color: var(--text-light);
+      }
+      .guide-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 30px;
+        margin-top: 50px;
+      }
+      .guide-step {
+        width: 30%;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        text-align: center;
+      }
+      .guide-step h3 {
+        color: var(--accent-gold);
+        font-size: 20px;
+        margin-top: 0;
+      }
+      .guide-step .step-number {
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 0.8;
+        color: rgba(255, 255, 255, 0.15);
+        margin-bottom: 20px;
       }
 
       /* Practitioner/Team Section */
@@ -234,14 +262,6 @@
         border-radius: 8px;
         border: 1px solid #ddd;
       }
-      .practitioner-card img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin-bottom: 15px;
-        border: 3px solid var(--secondary-green);
-      }
       .practitioner-card h3 {
         font-size: 22px;
         margin-bottom: 5px;
@@ -258,9 +278,6 @@
         color: var(--text-light);
         padding-bottom: 0;
       }
-      #contact h2 {
-        color: var(--text-light);
-      }
       .contact-grid {
         display: grid;
         grid-template-columns: 2fr 1fr;
@@ -272,18 +289,6 @@
         text-align: left;
         border-bottom: 2px solid var(--accent-gold);
         padding-bottom: 10px;
-      }
-      .contact-info p {
-        font-size: 17px;
-        margin: 10px 0;
-      }
-      .contact-info a {
-        color: var(--accent-gold);
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-      .contact-info a:hover {
-        color: var(--text-light);
       }
       .hours-list {
         list-style: none;
@@ -322,24 +327,23 @@
         .hero-content h1 {
           font-size: 50px;
         }
+        .philosophy-content,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
         .service-grid {
           grid-template-columns: 1fr;
+        }
+        .guide-grid {
+          flex-direction: column;
+          align-items: center;
+        }
+        .guide-step {
+          width: 80%;
         }
         .practitioner-grid {
           flex-direction: column;
           align-items: center;
-        }
-        .practitioner-card {
-          max-width: 90%;
-        }
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-        #announcement-banner .container {
-          flex-direction: column;
-        }
-        #announcement-banner a {
-          margin-top: 15px;
         }
       }
     </style>
@@ -350,6 +354,7 @@
         <nav>
           <div class="logo">CORE WELLNESS COLLECTIVE</div>
           <div class="nav-links">
+            <a href="#philosophy">Philosophy</a>
             <a href="#services">Services</a>
             <a href="#team">Practitioners</a>
             <a href="#contact">Contact</a>
@@ -364,79 +369,164 @@
     <section id="home" class="hero-section">
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1>Integrated Health. <br />Targeted Relief.</h1>
+        <h1>
+          당신의 몸, 근본에서 다시 균형 잡다 <br />
+          Your Body, Rebalanced From the Core
+        </h1>
         <p>
-          Combining Acupuncture, Chiropractic, and Massage Therapy to treat the
-          root cause of your pain.
+          AI 체형 분석 · 프리미엄 침치료 · 통증·체형·여성건강 전문<br />
+          All healing begins with structural balance.
         </p>
-        <a href="#" class="btn" style="padding: 18px 45px; font-size: 18px"
-          >Schedule Appointment Online</a
-        >
+        <a href="#" class="btn" style="padding: 18px 45px; font-size: 18px">
+          예약하기 / Schedule Appointment Online
+        </a>
       </div>
     </section>
 
-    <section id="announcement-banner">
-      <div class="container">
-        <span>✅ Now Accepting New Patients & Most Major Insurance Plans!</span>
-        <a href="#">Verify Your Insurance</a>
+    <section id="philosophy" class="container philosophy-section">
+      <h2 style="text-align: left">
+        당신의 건강은 체형에서 시작됩니다 / Your Structure Shapes Your Health
+      </h2>
+      <div class="philosophy-content">
+        <div>
+          <p style="font-size: 18px">
+            체형이 틀어지면 통증, 순환, 소화, 골반·내분비 기능까지 영향을
+            받습니다. 우리 클리닉은 단순 증상 치료가 아니라 <br />
+            **체형의 균형 → 기능 회복 → 통증 감소 → 건강의 흐름 회복** 이 원리를
+            기반으로 진료합니다.
+          </p>
+          <p style="font-size: 18px; margin-top: 15px">
+            When posture collapses, pain, circulation issues, digestive
+            problems, pelvic imbalance, and hormonal symptoms can follow. We
+            focus on restoring the foundation first: **Alignment → Function →
+            Pain Relief → Full-Body Health.**
+          </p>
+        </div>
+
+        <div class="why-choose-box">
+          <h3 style="color: var(--secondary-green); margin-top: 0">
+            정확한 평가 + 전통 의학의 통합 케어 <br />
+            Core Strengths & Advanced Diagnostics
+          </h3>
+          <ul class="philosophy-list">
+            <li>✅ Precision AI Body Analysis System 정밀 평가</li>
+            <li>
+              ✅ 통증·체형·순환을 함께 보는 통합 접근 / Integrated approach
+            </li>
+            <li>✅ 통증 재발을 막는 교정 중심 접근 / Corrective care</li>
+            <li>
+              ✅ 여성 건강을 위한 골반·복부 중심 케어 / Women's pelvic care
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section id="services" class="container">
-      <h2>Our Comprehensive Wellness Therapies</h2>
+      <h2>핵심 치료 서비스 / Our Comprehensive Wellness Therapies</h2>
       <div class="service-grid">
         <div class="service-item">
-          <h3>Acupuncture Therapy</h3>
+          <h3>체형 균형 침치료 / Structural Balance Acupuncture</h3>
           <p>
-            Targeted treatment for chronic pain, migraines, fertility, and
-            stress relief. Includes Electro-Acupuncture.
+            통증 완화, 근육 이완, 신경 안정, 기능 회복. Pain relief, muscle
+            relaxation, nervous system regulation.
           </p>
         </div>
         <div class="service-item">
-          <h3>Chiropractic Care</h3>
+          <h3>AI 체형 분석 / AI Body Analysis</h3>
           <p>
-            Spinal adjustments, joint mobilization, and functional
-            rehabilitation to restore alignment and mobility.
+            왜 아픈지 ‘눈으로 확인하는’ 정밀 평가. A precise, visual explanation
+            of your pain's true origin.
           </p>
         </div>
         <div class="service-item">
-          <h3>Massage Therapy (RMT)</h3>
+          <h3>여성 밸런스 침치료 / Women’s Balance Acupuncture</h3>
           <p>
-            Deep tissue, sports massage, and myofascial release for muscle
-            tension and recovery.
+            골반·복부 순환 개선, 호르몬 리듬 안정화. Pelvic alignment, hormonal
+            balance.
           </p>
         </div>
         <div class="service-item">
-          <h3>Cupping & Moxibustion</h3>
+          <h3>교정 테라피 / Corrective Therapy</h3>
           <p>
-            Ancient techniques to improve blood flow, relieve muscle stiffness,
-            and promote healing.
+            틀어진 관절·근육 라인을 재정렬. Joint/muscle realignment for
+            long-term improvement.
           </p>
         </div>
         <div class="service-item">
-          <h3>Herbal Medicine</h3>
+          <h3>건식 돔 사우나 / Dry Dome Sauna Therapy</h3>
+          <p>
+            디톡스, 숙근 이완, 빠른 회복. Detoxification, rapid relaxation,
+            circulatory boost.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3>한약 및 보조요법 / Herbal Medicine & Adjuncts</h3>
           <p>
             Customized formulas to address internal imbalances and support
             long-term health and vitality.
           </p>
         </div>
-        <div class="service-item">
-          <h3>Injury Rehabilitation</h3>
-          <p>
-            Focused protocols for sports injuries, post-op recovery, and
-            managing chronic pain conditions.
-          </p>
-        </div>
       </div>
       <div class="text-center" style="margin-top: 60px">
-        <a href="#" class="btn" style="background-color: var(--secondary-green)"
-          >View Detailed Service Descriptions</a
+        <a
+          href="#"
+          class="btn"
+          style="background-color: var(--secondary-green)"
         >
+          View Detailed Service Descriptions / 상세 서비스 보기
+        </a>
+      </div>
+    </section>
+
+    <section id="visit-guide" class="container guide-section">
+      <h2 style="color: var(--text-light)">
+        첫 방문 진행 과정 / What to Expect on Your First Visit
+      </h2>
+      <div class="guide-grid">
+        <div class="guide-step">
+          <div class="step-number">1</div>
+          <h3>AI 체형 분석 / Analysis</h3>
+          <p>
+            AI body & posture analysis. 통증의 근본적인 원인을 시각적으로
+            확인합니다.
+          </p>
+        </div>
+        <div class="guide-step">
+          <div class="step-number">2</div>
+          <h3>기능 평가 / Evaluation</h3>
+          <p>
+            Pain and functional evaluation. 개인별 상태에 맞춘 정밀한 기능
+            검사가 진행됩니다.
+          </p>
+        </div>
+        <div class="guide-step">
+          <div class="step-number">3</div>
+          <h3>치료 플랜 / Plan</h3>
+          <p>
+            Personalized treatment plan. 맞춤 치료 목표와 계획을 설정합니다.
+          </p>
+        </div>
+        <div class="guide-step">
+          <div class="step-number">4</div>
+          <h3>통합 치료 / Therapy</h3>
+          <p>
+            Acupuncture + dome sauna + adjunct therapies. 기능 회복 중심의 통합
+            치료가 시작됩니다.
+          </p>
+        </div>
+        <div class="guide-step">
+          <div class="step-number">5</div>
+          <h3>코칭 / Coaching</h3>
+          <p>
+            Posture & lifestyle coaching. 재발 방지 자세·생활 코칭을 제공합니다.
+          </p>
+        </div>
       </div>
     </section>
 
     <section id="team" class="container">
-      <h2>Meet Our Expert Practitioners</h2>
+      <h2>Meet Our Expert Practitioners / 전문가를 소개합니다</h2>
       <div class="practitioner-grid">
         <div class="practitioner-card">
           <img
@@ -470,16 +560,19 @@
       class="container"
       style="background-color: var(--primary-dark)"
     >
-      <h2 style="color: var(--text-light)">Visit Us Today</h2>
+      <h2 style="color: var(--text-light)">Visit Us Today / 오늘 방문하세요</h2>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3>Location & Scheduling</h3>
+          <h3>위치 및 예약 / Location & Scheduling</h3>
           <p style="font-size: 17px">
-            📍 **Address:** 456 Integrated Way, Suite 200, Metropolis, CA 90210
+            📍 **주소 / Address:** 456 Integrated Way, Suite 200, Metropolis, CA
+            90210
           </p>
-          <p style="font-size: 17px">📞 **Phone:** (555) 123-CORE (2673)</p>
           <p style="font-size: 17px">
-            📧 **Email:**
+            📞 **전화 / Phone:** (555) 123-CORE (2673)
+          </p>
+          <p style="font-size: 17px">
+            📧 **이메일 / Email:**
             <a href="mailto:info@corewellness.com">info@corewellness.com</a>
           </p>
 
@@ -492,17 +585,22 @@
               href="#"
               class="btn"
               style="background-color: var(--secondary-green)"
-              >Call Now</a
+              >Call Now / 전화 예약</a
             >
           </div>
         </div>
 
         <div class="contact-info">
-          <h3>Clinic Hours</h3>
+          <h3>진료 시간 / Clinic Hours</h3>
           <ul class="hours-list">
-            <li><span>Monday - Friday</span> <span>9:00 AM - 6:00 PM</span></li>
-            <li><span>Saturday</span> <span>9:00 AM - 1:00 PM</span></li>
-            <li><span>Sunday</span> <span>Closed</span></li>
+            <li>
+              <span>월요일 - 금요일 / Mon - Fri</span>
+              <span>9:00 AM - 6:00 PM</span>
+            </li>
+            <li>
+              <span>토요일 / Saturday</span> <span>9:00 AM - 1:00 PM</span>
+            </li>
+            <li><span>일요일 / Sunday</span> <span>Closed</span></li>
           </ul>
           <div class="map-placeholder">[Google Maps Embed Placeholder]</div>
         </div>
